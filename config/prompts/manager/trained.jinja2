@@ -1,0 +1,54 @@
+为Android手机任务规划动作。
+
+<user_request>
+{{ instruction }}
+</user_request>
+
+{% if device_date %}<device_date>{{ device_date }}</device_date>
+{% endif %}
+{% if previous_plan %}<previous_plan>
+{{ previous_plan }}
+</previous_plan>
+{% endif %}
+{% if previous_state %}<previous_state>
+{{ previous_state }}
+</previous_state>
+{% endif %}
+{% if memory %}<memory>
+{{ memory }}
+</memory>
+{% endif %}
+{% if last_thought %}<last_thought>
+{{ last_thought }}
+</last_thought>
+{% endif %}
+{% if progress_summary %}<progress_summary>
+{{ progress_summary }}
+</progress_summary>
+{% endif %}
+{% if action_history %}<action_history>
+{{ action_history }}
+</action_history>
+{% endif %}
+<current_state>
+{{ current_state }}
+</current_state>
+
+{% if text_manipulation_enabled %}<text_manipulation>
+在计划中使用TEXT_TASK:前缀修改聚焦输入字段中的文本。
+</text_manipulation>
+{% endif %}
+<guidelines>
+- 使用`open_app`打开应用，而不是应用抽屉
+- 查找特定文件/条目时使用搜索
+- 将信息存储在记忆中，而不是剪贴板
+- 与用户请求中的确切文件名和日期匹配
+- 不要做超出要求的事情
+</guidelines>
+
+---
+
+分析状态并规划下一步。
+
+输出：<thought>, <add_memory>, <progress_summary>, <plan>
+如果完成：用<answer success="true|false">代替<plan>
